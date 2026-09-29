@@ -1,4 +1,4 @@
-# 🔍 Indonesian Toxic Comment Classifier
+# Indonesian Toxic Comment Classifier
 
 Web app sederhana yang mendeteksi apakah sebuah komentar berbahasa Indonesia
 mengandung unsur toxic/hate speech, menggunakan TF-IDF + Logistic Regression.
@@ -7,7 +7,7 @@ mengandung unsur toxic/hate speech, menggunakan TF-IDF + Logistic Regression.
 
 ---
 
-## 📌 Latar Belakang
+##  Latar Belakang
 
 Komentar toxic di media sosial Indonesia adalah masalah nyata, tapi tools
 moderasi otomatis untuk Bahasa Indonesia masih sangat terbatas dibanding
@@ -15,12 +15,12 @@ Bahasa Inggris. Project ini adalah eksperimen pertama saya membangun
 text classification pipeline end-to-end — dari data mentah Twitter sampai
 web app yang bisa dipakai siapa saja.
 
-## 🎯 Problem Statement
+## Problem Statement
 
 Diberikan sebuah teks komentar, klasifikasikan apakah komentar tersebut
 **toxic** (mengandung hate speech) atau **non-toxic**.
 
-## 📊 Dataset
+## Dataset
 
 - **Sumber:** [Indonesian Abusive and Hate Speech Twitter Text](https://github.com/okkyibrohim/id-multi-label-hate-speech-and-abusive-language-detection) (Ibrohim & Budi, 2019)
 - **Ukuran:** ~13.000 tweet berlabel
@@ -38,7 +38,7 @@ Raw Tweet
   → Prediksi: TOXIC / NON-TOXIC + confidence score
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Komponen | Tools |
 |----------|-------|
@@ -48,7 +48,7 @@ Raw Tweet
 | Web App | Streamlit |
 | Deployment | Hugging Face Spaces |
 
-## 📈 Hasil Model
+## Hasil Model
 
 | Metrik | Score |
 |--------|-------|
@@ -60,38 +60,8 @@ Raw Tweet
 Model dievaluasi menggunakan **5-fold cross-validation** untuk memastikan
 hasil tidak kebetulan dari satu split data saja.
 
-## 🔍 Apa yang Saya Pelajari
 
-- **Data leakage**: TF-IDF vectorizer hanya boleh di-`fit` pada training set,
-  bukan seluruh dataset — kesalahan umum yang terlihat sepele tapi
-  mempengaruhi validitas evaluasi.
-- **Spurious correlation**: model bisa belajar korelasi yang tidak relevan
-  secara semantik (misalnya entitas tertentu) hanya karena kebetulan sering
-  muncul di data toxic.
-- **Context-dependent toxicity**: TF-IDF + Logistic Regression tidak bisa
-  menangkap sarkasme atau toxic implisit karena model ini hanya melihat
-  kemunculan kata, bukan konteks kalimat.
-- **Error analysis lebih penting dari angka akhir**: membaca sampel false
-  positive/negative memberi insight yang tidak terlihat dari classification
-  report saja.
-
-## ⚠️ Keterbatasan
-
-- Dataset terbatas (~13K tweet) dan berasal dari satu sumber/waktu tertentu —
-  model mungkin tidak generalize baik ke platform lain (TikTok, YouTube, dll)
-  atau bahasa gaul yang lebih baru.
-- Model tidak memahami sarkasme, konteks percakapan, atau nuansa budaya.
-- TF-IDF bersifat *bag-of-words* — urutan kata tidak diperhitungkan.
-
-## 🚀 Pengembangan Selanjutnya
-
-- [ ] Fine-tune model berbasis transformer (IndoBERT) untuk menangkap konteks
-- [ ] Tambah data dari sumber lain untuk meningkatkan generalisasi
-- [ ] Multi-label classification (HS, abusive, severity level) — dataset
-      sebenarnya punya 12 label, project ini hanya pakai 1
-- [ ] Tambahkan explanation di UI (kata mana yang memicu prediksi)
-
-## 🗂️ Struktur Project
+## Struktur Project
 
 ```
 toxic-classifier/
